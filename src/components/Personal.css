@@ -1,0 +1,66 @@
+.main-container {
+  height: 100vh;
+  width: 100%;
+  background-color: blueviolet;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
+.left-cont {
+  background: #fff;
+  text-align: center;
+  width: 50%;
+}
+.right-cont {
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  width: 50%;
+  text-align: center;
+}
+.personal-title {
+  font-family: "Rowdies";
+  font-size: 64px;
+  color: #fe3b1f;
+  width: 74%;
+  margin: 80px;
+}
+.description {
+  font-family: Montserrat;
+  font-style: normal;
+  font-size: 24px;
+  text-align: start;
+  width: 650px;
+  line-height: 200%;
+  color: #fff;
+  margin: auto;
+}
+.personal-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 455px;
+  height: 533px;
+  margin: auto;
+}
+.personal-inputs input {
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  margin: 20px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  align-items: center;
+  font-family: Montserrat;
+  outline: none;
+}
+
+.personal-inputs input::placeholder {
+  font-style: italic;
+  font-family: Montserrat;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

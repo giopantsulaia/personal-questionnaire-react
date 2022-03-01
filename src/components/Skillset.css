@@ -1,0 +1,66 @@
+.technical-title {
+  font-family: Rowdies;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  color: #fe3b1f;
+  margin: 80px auto 120px 60px;
+}
+.skill-select {
+  margin: 0px auto;
+  width: 415px;
+  height: 54px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  align-items: center;
+  font-family: Montserrat;
+  font-style: italic;
+  background: #ffffff;
+  border: 1px solid #525557;
+  outline: none;
+}
+.skills {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #454545;
+}
+.skill-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 455px;
+  height: 533px;
+  margin: auto;
+}
+.skill-inputs input {
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  margin: 20px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  align-items: center;
+  font-family: Montserrat;
+}
+.add-skill {
+  width: 201px;
+  height: 32px;
+  background: #fe3b1f;
+  color: #ffffff;
+  border: none;
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 15px;
+  margin-left: 233px;
+  cursor: pointer;
+}
+.years-exp::placeholder {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #727272;
+}
