@@ -3,6 +3,7 @@ import "./Personal.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function Personal() {
+  // MAKING IT SO THAT DATA DOES NOT GET LOST AFTER REFRESHING/LEAVING THE PAGE
   function getFormInfo() {
     const storedInfo = localStorage.getItem("form");
     if (!storedInfo)
@@ -14,6 +15,8 @@ export default function Personal() {
       };
     return JSON.parse(storedInfo);
   }
+  //------------------------------------------------------------------
+
   const [userInfo, setUserInfo] = useState(getFormInfo);
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(userInfo));
@@ -27,7 +30,6 @@ export default function Personal() {
       };
     });
   }
-  console.log(userInfo);
   return (
     <main className="main-container">
       <div className="left-cont">

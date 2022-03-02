@@ -31,7 +31,7 @@
   display: flex;
   flex-direction: column;
   width: 455px;
-  height: 533px;
+  height: 200px;
   margin: auto;
 }
 .skill-inputs input {
@@ -63,4 +63,30 @@
   font-size: 14px;
   line-height: 17px;
   color: #727272;
+}
+.selected-skills {
+  height: 400px;
+  overflow: hidden;
+  width: 417px;
+  margin: auto;
+  background-color: darkseagreen;
+  text-align: start;
+}
+.skill-cont {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 54px;
+  border: 1px solid #525557;
+  margin-bottom: 20px;
+  align-items: center;
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+.delete-btn {
+  position: absolute;
+  right: 20px;
 }
