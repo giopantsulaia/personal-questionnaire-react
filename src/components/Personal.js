@@ -2,7 +2,10 @@ import React from "react";
 import "./Personal.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-export default function Personal() {
+import previous from "../images/Previous.png";
+import next from "../images/Next.png";
+
+export default function Personal({ linkStyle }) {
   // MAKING IT SO THAT DATA DOES NOT GET LOST AFTER REFRESHING/LEAVING THE PAGE
   function getFormInfo() {
     const storedInfo = localStorage.getItem("form");
@@ -30,6 +33,7 @@ export default function Personal() {
       };
     });
   }
+
   return (
     <main className="main-container">
       <div className="left-cont">
@@ -44,6 +48,7 @@ export default function Personal() {
             value={userInfo.firstName}
             onChange={handleChange}
             required
+            minLength="2"
           />
           <input
             type="text"
@@ -52,6 +57,7 @@ export default function Personal() {
             value={userInfo.lastName}
             onChange={handleChange}
             required
+            minLength="2"
           />
           <input
             type="email"
@@ -68,11 +74,33 @@ export default function Personal() {
             value={userInfo.phoneNum}
             onChange={handleChange}
           />
+          <div className="pagination">
+            <Link to="/" style={linkStyle}>
+              <img src={previous} className="previous"></img>
+            </Link>
+            <Link to="/personal-info" style={linkStyle}>
+              <i className="fas fa-circle"></i>
+            </Link>
+            <Link to="/technical-skillset" style={linkStyle}>
+              <i className="fas fa-circle dark"></i>
+            </Link>
+            <Link to="/covid" style={linkStyle}>
+              <i className="fas fa-circle dark"></i>
+            </Link>
+            <Link to="/covid" style={linkStyle}>
+              <i className="fas fa-circle dark"></i>
+            </Link>
+            <Link to="/covid" style={linkStyle}>
+              <i className="fas fa-circle dark"></i>
+            </Link>
+            <Link to="/technical-skillset" style={linkStyle}>
+              <img src={next} className="next"></img>
+            </Link>
+          </div>
+          <button>ok</button>
         </form>
-        <Link to={`/technical-skillset`}>
-          <button>NEXT PAGE</button>
-        </Link>
       </div>
+
       <div className="right-cont">
         <h1 className="personal-title">Redberry Origins</h1>
         <p className="description">

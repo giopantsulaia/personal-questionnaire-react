@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Skillset.css";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import previous from "../images/Previous.png";
+import next from "../images/Next.png";
 import removeIcon from "../images/Remove.svg";
 export default function Skillset({ input, setInput, chosen, setChosen }) {
   //SKILLS FETCHED FROM API
@@ -19,9 +21,8 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
 
   function handleChange(e) {
     setInput(e.target.value);
-    console.log("changed");
   }
-
+  let randomNum;
   function onSubmit(e) {
     e.preventDefault();
     if (chosen.find((e) => e.skili === input) == null) {
@@ -29,9 +30,10 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
         ...chosen,
         { id: uuidv4(), skili: input, years: skillExp.value },
       ]);
-      console.log(input);
     }
+    randomNum = Math.floor(Math.random() * 10000);
   }
+
   function handleExpValueChange(event) {
     const { name, value } = event.target;
     setSkillexp((prevSkillexp) => {
@@ -46,6 +48,11 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
     const newSkills = chosen.filter((item) => item.id !== id);
     setChosen(newSkills);
   };
+  const linkStyle = {
+    margin: "0px",
+    padding: "0px",
+    textDecoration: "none",
+  };
   return (
     <main className="main-container">
       <div className="left-cont">
@@ -56,7 +63,7 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
             name="chosen"
             onChange={handleChange}
           >
-            <option disabled hidden>
+            <option disabled hidden key={Math.floor(Math.random() * 10000)}>
               Skills
             </option>
             {skills.map((skill) => {
@@ -71,7 +78,7 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
             type="number"
             placeholder="Experience Duration in Years"
             name="value"
-            value={skillExp.value}
+            value={skillExp.value || ""}
             className="years-exp"
             onChange={handleExpValueChange}
           />
@@ -80,17 +87,53 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
         <div className="selected-skills">
           {chosen.map((item) => {
             return (
-              <div className="skill-cont">
-                <h2>{item.skili}</h2>
-                <h2>{item.years}</h2>
-                <img src={removeIcon} onClick={() => handleRemove(item.id)} />
+              <div
+                className="skill-cont"
+                key={Math.floor(Math.random() * 10000)}
+              >
+                <h2 className="skill" key={randomNum}>
+                  {item.skili}
+                </h2>
+                <h2
+                  className="exp"
+                  key={randomNum}
+                >{`Years of Experience: ${item.years}`}</h2>
+                <img
+                  src={removeIcon}
+                  onClick={() => handleRemove(item.id)}
+                  className="delete-btn"
+                  key={randomNum}
+                />
               </div>
             );
           })}
         </div>
-        <Link to="/personal-info">
+        {/* <Link to="/personal-info">
           <button>BACK</button>
-        </Link>
+        </Link> */}
+        <div className="pagination">
+          <Link to="/personal-info" style={linkStyle}>
+            <img src={previous} className="previous"></img>
+          </Link>
+          <Link to="/personal-info" style={linkStyle}>
+            <i className="fas fa-circle"></i>
+          </Link>
+          <Link to="/technical-skillset" style={linkStyle}>
+            <i className="fas fa-circle"></i>
+          </Link>
+          <Link to="/covid" style={linkStyle}>
+            <i className="fas fa-circle dark"></i>
+          </Link>
+          <Link to="/covid" style={linkStyle}>
+            <i className="fas fa-circle dark"></i>
+          </Link>
+          <Link to="/covid" style={linkStyle}>
+            <i className="fas fa-circle dark"></i>
+          </Link>
+          <Link to="/covid" style={linkStyle}>
+            <img src={next} className="next"></img>
+          </Link>
+        </div>
       </div>
       <div className="right-cont">
         <h1 className="technical-title">A bit about our battles</h1>

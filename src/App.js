@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Personal from "./components/Personal";
 import Skillset from "./components/Skillset";
 import { useState } from "react";
+import Covid from "./components/Covid";
 
 function App() {
   const [input, setInput] = useState("");
@@ -28,6 +29,7 @@ function App() {
               />
             }
           />
+          <Route path="covid" element={<Covid />} />
         </Routes>
       </div>
     </Router>

@@ -1,7 +1,6 @@
 .main-container {
-  height: 100vh;
+  height: 100%;
   width: 100%;
-  background-color: blueviolet;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -14,6 +13,7 @@
 .right-cont {
   background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
   width: 50%;
+  height: auto;
   text-align: center;
 }
 .personal-title {

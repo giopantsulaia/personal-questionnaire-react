@@ -1,0 +1,83 @@
+.covid-stuff {
+  height: 400px;
+  padding-bottom: 0px;
+  margin-left: 40px;
+}
+.work-preference {
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  align-items: flex-start;
+  width: 645px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 100px;
+}
+.covid-title {
+  font-family: "Rowdies";
+  font-size: 64px;
+  color: #fe3b1f;
+  width: 760px;
+  margin: 80px auto 80px 110px;
+}
+.work-preference label {
+  margin-bottom: 10px;
+}
+.work-preference input {
+  width: 12px;
+  height: 12px;
+}
+.covid-contact {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: flex-start;
+  width: 645px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 100px;
+}
+.covid-date {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  align-items: flex-start;
+  width: 645px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 100px;
+}
+.datepicker {
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  margin: 20px;
+  box-sizing: border-box;
+  padding-left: 40px;
+  align-items: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: italic;
+  width: 455px;
+  margin: -10px auto 0px -190px;
+  color: #454545;
+  cursor: pointer;
+}
+.date-btn {
+  position: absolute;
+  left: 540px;
+  pointer-events: none;
+  top: 543px;
+}
+.date-btn2 {
+  position: relative;
+  left: 400px;
+  pointer-events: none;
+  bottom: 37px;
+}

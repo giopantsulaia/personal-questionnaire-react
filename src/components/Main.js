@@ -7,8 +7,8 @@ export default function Main() {
     <main className="mainPage">
       <h1 className="welcome-title">Welcome Rocketeer !</h1>
       <div className="main-cont">
-        <Link to={`/personal-info`} className="link">
-          <button className="start-btn">Start Questionnaire</button>
+        <Link to="/personal-info" className="start-btn">
+          Start Questionnaire
         </Link>
         <p className="submitted-apps">Submitted Applicnations</p>
         <img src={rocketman} className="rocketman" alt="rocketman"></img>
