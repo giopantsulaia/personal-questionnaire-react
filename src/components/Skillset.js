@@ -9,13 +9,20 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
   //SKILLS FETCHED FROM API
   const [skills, setSkills] = useState([]);
   useEffect(() => {
+    let isSubscribed = true;
     fetch("https://bootcamp-2022.devtest.ge/api/skills")
       .then((res) => res.json())
       .then((data) => {
         setSkills(data);
       })
       .catch((err) => {
-        console.log(err);
+        if (isSubscribed) {
+          setSkills((prevSkills) => ({
+            ...prevSkills,
+            err,
+          }));
+        }
+        return () => (isSubscribed = false);
       });
   }, []);
 
@@ -108,9 +115,6 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
             );
           })}
         </div>
-        {/* <Link to="/personal-info">
-          <button>BACK</button>
-        </Link> */}
         <div className="pagination">
           <Link to="/personal-info" style={linkStyle}>
             <img src={previous} className="previous"></img>
@@ -124,10 +128,10 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
           <Link to="/covid" style={linkStyle}>
             <i className="fas fa-circle dark"></i>
           </Link>
-          <Link to="/covid" style={linkStyle}>
+          <Link to="/insights" style={linkStyle}>
             <i className="fas fa-circle dark"></i>
           </Link>
-          <Link to="/covid" style={linkStyle}>
+          <Link to="/submit" style={linkStyle}>
             <i className="fas fa-circle dark"></i>
           </Link>
           <Link to="/covid" style={linkStyle}>

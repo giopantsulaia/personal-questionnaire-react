@@ -67,13 +67,22 @@ export default function Personal({ linkStyle }) {
             onChange={handleChange}
             required
           />
-          <input
+          {/* <input
             type="number"
             placeholder="+995 5_ _ _ _"
             name="phoneNum"
             value={userInfo.phoneNum}
             onChange={handleChange}
-          />
+          /> */}
+          <input
+            type="tel"
+            id="phone"
+            name="phoneNum"
+            placeholder="+995 5_ _ _ _"
+            pattern="(\+|995)\d{9,9}"
+            value={userInfo.phoneNum}
+            onChange={handleChange}
+          ></input>
           <div className="pagination">
             <Link to="/" style={linkStyle}>
               <img src={previous} className="previous"></img>
@@ -87,10 +96,10 @@ export default function Personal({ linkStyle }) {
             <Link to="/covid" style={linkStyle}>
               <i className="fas fa-circle dark"></i>
             </Link>
-            <Link to="/covid" style={linkStyle}>
+            <Link to="/insights" style={linkStyle}>
               <i className="fas fa-circle dark"></i>
             </Link>
-            <Link to="/covid" style={linkStyle}>
+            <Link to="/submit" style={linkStyle}>
               <i className="fas fa-circle dark"></i>
             </Link>
             <Link to="/technical-skillset" style={linkStyle}>

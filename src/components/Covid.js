@@ -102,6 +102,7 @@ export default function Covid({ linkStyle }) {
                 selected={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
                 placeholderText="Date"
+                required
                 maxDate={new Date()}
               />
               <img src={calendar} className="date-btn"></img>
@@ -138,6 +139,7 @@ export default function Covid({ linkStyle }) {
                 selected={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
                 placeholderText="Date"
+                required
                 maxDate={new Date()}
               />
               <img src={calendar} className="date-btn2"></img>
@@ -156,13 +158,13 @@ export default function Covid({ linkStyle }) {
             <Link to="/covid" style={linkStyle}>
               <i className="fas fa-circle "></i>
             </Link>
-            <Link to="/covid" style={linkStyle}>
+            <Link to="/insights" style={linkStyle}>
               <i className="fas fa-circle dark"></i>
             </Link>
-            <Link to="/covid" style={linkStyle}>
+            <Link to="/submit" style={linkStyle}>
               <i className="fas fa-circle dark"></i>
             </Link>
-            <Link to="/covid" style={linkStyle}>
+            <Link to="/insights" style={linkStyle}>
               <img src={next} className="next"></img>
             </Link>
           </div>

@@ -4,6 +4,8 @@ import Personal from "./components/Personal";
 import Skillset from "./components/Skillset";
 import { useState } from "react";
 import Covid from "./components/Covid";
+import Insights from "./components/Insights";
+import Submit from "./components/Submit";
 
 function App() {
   const [input, setInput] = useState("");
@@ -30,6 +32,8 @@ function App() {
             }
           />
           <Route path="covid" element={<Covid />} />
+          <Route path="insights" element={<Insights />} />
+          <Route path="submit" element={<Submit />} />
         </Routes>
       </div>
     </Router>
