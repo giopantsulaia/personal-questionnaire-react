@@ -37,6 +37,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
                 name="work_preference"
                 value="from_office"
                 required
+                checked={userInfo.work_preference === "from_office"}
                 id="sairme"
                 onChange={handleChange}
               />
@@ -47,6 +48,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
                 type="radio"
                 name="work_preference"
                 value="from_home"
+                checked={userInfo.work_preference === "from_home"}
                 required
                 id="home"
                 onChange={handleChange}
@@ -58,6 +60,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
                 type="radio"
                 name="work_preference"
                 value="hybrid"
+                checked={userInfo.work_preference === "hybrid"}
                 required
                 onChange={handleChange}
                 id="hybrid"
@@ -73,6 +76,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
                 name="had_covid"
                 value={true}
                 required
+                checked={userInfo.had_covid}
                 onClick={() => {
                   setUserInfo((prevInfo) => {
                     return {
@@ -125,6 +129,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
                 type="radio"
                 name="vaccinated"
                 value={true}
+                checked={userInfo.vaccinated}
                 required
                 onClick={() => {
                   setUserInfo((prevInfo) => {
@@ -172,7 +177,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
           )}
           <div className="pagination">
             <Link to="/technical-skillset" style={linkStyle}>
-              <img src={previous} className="previous"></img>
+              <img src={previous} className="previous" alt="prev"></img>
             </Link>
             <Link to="/personal-info" style={linkStyle}>
               <i className="fas fa-circle"></i>
@@ -188,7 +193,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
             </button>
             <i className="fas fa-circle dark"></i>
             <button className="arrow-right">
-              <img src={next} className="next"></img>
+              <img src={next} className="next" alt="next"></img>
             </button>
           </div>
         </form>

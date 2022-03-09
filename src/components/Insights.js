@@ -58,6 +58,7 @@ export default function Insights({ linkStyle, userInfo, setUserInfo }) {
                   value={false}
                   required
                   id="no"
+                  checked={!userInfo.will_organize_devtalk}
                   onClick={() => {
                     setUserInfo((prevInfo) => {
                       return {
@@ -97,7 +98,7 @@ export default function Insights({ linkStyle, userInfo, setUserInfo }) {
             </div>
             <div className="pagination">
               <Link to="/covid" style={linkStyle}>
-                <img src={previous} className="previous"></img>
+                <img src={previous} className="previous" alt="next"></img>
               </Link>
               <Link to="/personal-info" style={linkStyle}>
                 <i className="fas fa-circle"></i>
@@ -115,7 +116,7 @@ export default function Insights({ linkStyle, userInfo, setUserInfo }) {
                 <i className="fas fa-circle dark"></i>
               </button>
               <button className="arrow-right">
-                <img src={next} className="next"></img>
+                <img src={next} className="next" alt="next"></img>
               </button>
             </div>
           </form>

@@ -58,9 +58,10 @@ export default function Applications({ skills }) {
               <div className="app-header" onClick={() => handleClick(index)}>
                 <p className="app-num">{index + 1}</p>
                 <img
+                  alt="arrow"
                   src={
                     shownElements.some((e) => {
-                      return e.index == index;
+                      return e.index === index;
                     })
                       ? vector2
                       : vector
@@ -70,7 +71,7 @@ export default function Applications({ skills }) {
               </div>
               {shownElements.map((obj) => {
                 {
-                  if (obj.index == index) {
+                  if (obj.index === index) {
                     return (
                       <div key={index} className="app-info">
                         <div className="left-info">

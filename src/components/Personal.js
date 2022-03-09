@@ -58,16 +58,16 @@ export default function Personal({ linkStyle, setUserInfo, userInfo }) {
             id="phone"
             name="phone"
             placeholder="+995 5_ _ _ _"
-            pattern="\+[0-9]{12}"
+            pattern="\+9955[0-9]{8}"
             value={userInfo.phone}
             onInvalid={() => {
-              alert("phone number must be georgian: (+995)-123-456-789 ");
+              alert("phone number must be georgian: (+9955)-12-345-678 ");
             }}
             onChange={handleChange}
           />
           <div className="pagination">
             <Link to="/" style={linkStyle}>
-              <img src={previous} className="previous" />
+              <img src={previous} className="previous" alt="prev" />
             </Link>
             <Link to="/personal-info" style={linkStyle}>
               <i className="fas fa-circle"></i>
@@ -79,7 +79,7 @@ export default function Personal({ linkStyle, setUserInfo, userInfo }) {
             <i className="fas fa-circle dark"></i>
             <i className="fas fa-circle dark"></i>
             <button className="arrow-right">
-              <img src={next} className="next"></img>
+              <img src={next} className="next" alt="prev"></img>
             </button>
           </div>
         </form>

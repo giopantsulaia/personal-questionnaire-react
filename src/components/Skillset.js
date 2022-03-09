@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Skillset.css";
-import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
 import previous from "../images/Previous.png";
 import next from "../images/Next.png";
-import removeIcon from "../images/Remove.svg";
+import removeIcon from "../images/Remove.png";
 export default function Skillset({
   input,
   setInput,
@@ -73,7 +72,7 @@ export default function Skillset({
     localStorage.setItem("form", JSON.stringify(userInfo));
   }, [userInfo]);
   function handleClick() {
-    if (skillCount != 0) {
+    if (skillCount !== 0) {
       updateState();
     } else {
       window.location.reload(false);
@@ -137,6 +136,7 @@ export default function Skillset({
                   onClick={() => handleRemove(item.id)}
                   className="delete-btn"
                   key={randomNum}
+                  alt="delete"
                 />
               </div>
             );
@@ -144,7 +144,7 @@ export default function Skillset({
         </div>
         <div className="pagination">
           <Link to="/personal-info" style={linkStyle}>
-            <img src={previous} className="previous"></img>
+            <img src={previous} className="previous" alt="prev"></img>
           </Link>
           <Link to="/personal-info" style={linkStyle}>
             <i className="fas fa-circle"></i>
@@ -158,7 +158,7 @@ export default function Skillset({
           <i className="fas fa-circle dark"></i>
           <i className="fas fa-circle dark"></i>
           <Link to="/covid" style={linkStyle} onClick={handleClick}>
-            <img src={next} className="next"></img>
+            <img src={next} className="next" alt="next"></img>
           </Link>
         </div>
       </div>

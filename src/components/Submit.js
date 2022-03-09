@@ -10,16 +10,16 @@ export default function Submit({ userInfo }) {
   };
   const url = "https://bootcamp-2022.devtest.ge/api/application";
   function filteredInfo() {
-    if (userInfo.phone == "") {
+    if (userInfo.phone === "") {
       delete userInfo.phone;
     }
-    if (userInfo.had_covid == false) {
+    if (userInfo.had_covid === false) {
       delete userInfo.had_covid_at;
     }
-    if (userInfo.vaccinated == false) {
+    if (userInfo.vaccinated === false) {
       delete userInfo.vaccinated_at;
     }
-    if (userInfo.will_organize_devtalk == false) {
+    if (userInfo.will_organize_devtalk === false) {
       delete userInfo.devtalk_topic;
     }
     return userInfo;
