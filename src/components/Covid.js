@@ -186,9 +186,7 @@ export default function Covid({ linkStyle, userInfo, setUserInfo }) {
             <button className="button-dark">
               <i className="fas fa-circle dark"></i>
             </button>
-
             <i className="fas fa-circle dark"></i>
-
             <button className="arrow-right">
               <img src={next} className="next"></img>
             </button>

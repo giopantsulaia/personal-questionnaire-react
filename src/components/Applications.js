@@ -8,7 +8,7 @@ export default function Applications({ skills }) {
   useEffect(() => {
     let isSubscribed = true;
     fetch(
-      "https://bootcamp-2022.devtest.ge/api/applications?token=729327e1-18c9-4d17-a77e-9e04ab63fec7"
+      "https://bootcamp-2022.devtest.ge/api/applications?token=e68bf5cc-f5b8-4611-8169-16da7818a576"
     )
       .then((res) => res.json())
       .then((data) => {

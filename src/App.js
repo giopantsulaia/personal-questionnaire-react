@@ -14,11 +14,12 @@ function App() {
   function addSkill(taken) {
     setChosen([taken, ...chosen]);
   }
+  /// saving info in localstorage so that it doesnt get lost on refresh (ig)
   function getFormInfo() {
     const storedInfo = localStorage.getItem("form");
     if (!storedInfo)
       return {
-        token: "729327e1-18c9-4d17-a77e-9e04ab63fec7",
+        token: "e68bf5cc-f5b8-4611-8169-16da7818a576",
         first_name: "",
         last_name: "",
         email: "",

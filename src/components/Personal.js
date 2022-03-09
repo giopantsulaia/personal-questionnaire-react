@@ -75,13 +75,9 @@ export default function Personal({ linkStyle, setUserInfo, userInfo }) {
             <button className="button-dark">
               <i className="fas fa-circle dark"></i>
             </button>
-
             <i className="fas fa-circle dark"></i>
-
             <i className="fas fa-circle dark"></i>
-
             <i className="fas fa-circle dark"></i>
-
             <button className="arrow-right">
               <img src={next} className="next"></img>
             </button>

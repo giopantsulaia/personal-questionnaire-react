@@ -15,8 +15,6 @@ export default function Skillset({
   skills,
   setSkills,
 }) {
-  //SKILLS FETCHED FROM API
-
   function handleChange(e) {
     setInput(e.target.value);
   }
@@ -157,11 +155,8 @@ export default function Skillset({
           <Link to="/covid" style={linkStyle} onClick={handleClick}>
             <i className="fas fa-circle dark"></i>
           </Link>
-
           <i className="fas fa-circle dark"></i>
-
           <i className="fas fa-circle dark"></i>
-
           <Link to="/covid" style={linkStyle} onClick={handleClick}>
             <img src={next} className="next"></img>
           </Link>

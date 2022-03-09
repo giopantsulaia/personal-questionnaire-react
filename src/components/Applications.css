@@ -1,7 +1,8 @@
 .applications-body {
   width: 100%;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   position: absolute;
   background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
 }
