@@ -1,0 +1,110 @@
+.applications-body {
+  width: 100%;
+  flex-direction: column;
+  height: 100vh;
+  position: absolute;
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+}
+.app-container {
+  margin: auto 350px;
+  width: 1154px;
+  display: flex;
+  flex-direction: column;
+  font-family: Montserrat;
+}
+.app {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.vector {
+  width: 12.02px;
+  height: 7.42px;
+  margin-right: 20px;
+}
+.app-num {
+  color: #fff;
+  margin-left: 20px;
+}
+.applications-title {
+  font-size: 56px;
+  margin-bottom: 0px;
+  margin-left: 340px;
+  letter-spacing: 0.11em;
+  font-family: Rowdies;
+  font-weight: bold;
+  color: #fff;
+}
+.app-info {
+  height: 1200px;
+  border: 1px solid red;
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  margin-left: 9px;
+  flex-direction: row;
+}
+.app-header {
+  background: #fe3b1f;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  margin: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+.left-info {
+  width: 50%;
+  display: flex;
+  font-family: Montserrat;
+  font-weight: normal;
+  flex-direction: column;
+}
+.right-info {
+  width: 50%;
+  font-family: Montserrat;
+  font-weight: normal;
+}
+.title {
+  font-size: 18px;
+  width: 350px;
+  font-style: italic;
+  margin: 15px auto;
+  color: #fe3b1f;
+  text-decoration: underline;
+}
+.personal-information {
+  display: flex;
+  font-style: italic;
+  flex-direction: row;
+  width: 350px;
+  margin: 20px auto;
+  justify-content: space-between;
+}
+.info-names {
+  height: 150px;
+}
+.info {
+  height: 150px;
+}
+.info h5 {
+  color: #454545;
+}
+.covid-situation {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 80%;
+  margin: 20px auto;
+}
+.app-date {
+  width: 400px;
+  height: 54px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  pointer-events: none;
+}

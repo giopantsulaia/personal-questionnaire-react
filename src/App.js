@@ -7,7 +7,6 @@ import Covid from "./components/Covid";
 import Insights from "./components/Insights";
 import Submit from "./components/Submit";
 import Applications from "./components/Applications";
-import { addBusinessDays, parseISO } from "date-fns";
 import Thanks from "./components/Thanks";
 function App() {
   const [input, setInput] = useState("");
@@ -19,7 +18,7 @@ function App() {
     const storedInfo = localStorage.getItem("form");
     if (!storedInfo)
       return {
-        token: "d9dffa06-f974-44bc-8deb-6bee052234c7",
+        token: "729327e1-18c9-4d17-a77e-9e04ab63fec7",
         first_name: "",
         last_name: "",
         email: "",
@@ -36,6 +35,24 @@ function App() {
       };
     return JSON.parse(storedInfo);
   }
+  const [skills, setSkills] = useState([]);
+  useEffect(() => {
+    let isSubscribed = true;
+    fetch("https://bootcamp-2022.devtest.ge/api/skills")
+      .then((res) => res.json())
+      .then((data) => {
+        setSkills(data);
+      })
+      .catch((err) => {
+        if (isSubscribed) {
+          setSkills((prevSkills) => ({
+            ...prevSkills,
+            err,
+          }));
+        }
+        return () => (isSubscribed = false);
+      });
+  }, []);
   const [userInfo, setUserInfo] = useState(getFormInfo);
   useEffect(() => {
     localStorage.setItem("form", JSON.stringify(userInfo));
@@ -60,6 +77,8 @@ function App() {
                 setChosen={setChosen}
                 userInfo={userInfo}
                 setUserInfo={setUserInfo}
+                skills={skills}
+                setSkills={setSkills}
               />
             }
           />
@@ -72,7 +91,10 @@ function App() {
             element={<Insights userInfo={userInfo} setUserInfo={setUserInfo} />}
           />
           <Route path="submit" element={<Submit userInfo={userInfo} />} />
-          <Route path="applications" element={<Applications />} />
+          <Route
+            path="applications"
+            element={<Applications skills={skills} />}
+          />
           <Route path="thankyou" element={<Thanks />} />
         </Routes>
       </div>

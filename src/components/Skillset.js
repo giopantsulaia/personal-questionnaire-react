@@ -12,26 +12,11 @@ export default function Skillset({
   setChosen,
   userInfo,
   setUserInfo,
+  skills,
+  setSkills,
 }) {
   //SKILLS FETCHED FROM API
-  const [skills, setSkills] = useState([]);
-  useEffect(() => {
-    let isSubscribed = true;
-    fetch("https://bootcamp-2022.devtest.ge/api/skills")
-      .then((res) => res.json())
-      .then((data) => {
-        setSkills(data);
-      })
-      .catch((err) => {
-        if (isSubscribed) {
-          setSkills((prevSkills) => ({
-            ...prevSkills,
-            err,
-          }));
-        }
-        return () => (isSubscribed = false);
-      });
-  }, []);
+
   function handleChange(e) {
     setInput(e.target.value);
   }
