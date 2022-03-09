@@ -10,7 +10,9 @@ export default function Main() {
         <Link to="/personal-info" className="start-btn">
           Start Questionnaire
         </Link>
-        <p className="submitted-apps">Submitted Applicnations</p>
+        <Link to="/applications" className="submitted-apps">
+          Submitted Applicnations
+        </Link>
         <img src={rocketman} className="rocketman" alt="rocketman"></img>
       </div>
     </main>

@@ -3,44 +3,39 @@ import "./Covid.css";
 import { Link } from "react-router-dom";
 import previous from "../images/Previous.png";
 import next from "../images/Next.png";
-import { useState } from "react";
-import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import calendar from "../images/calendar.png";
-export default function Covid({ linkStyle }) {
+import { useNavigate } from "react-router-dom";
+export default function Covid({ linkStyle, userInfo, setUserInfo }) {
   const descStyles = {
     width: "705px",
     height: "606px",
   };
-  const [formData, setFormData] = useState({
-    preference: "",
-    covidContact: "",
-    vaccinated: "",
-  });
-
   function handleChange(event) {
     const { name, value } = event.target;
-    setFormData((prevFormData) => {
+    setUserInfo((prevUserInfo) => {
       return {
-        ...prevFormData,
+        ...prevUserInfo,
         [name]: value,
       };
     });
   }
-  const [selectedDate, setSelectedDate] = useState(null);
-
+  let navigate = useNavigate();
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/insights");
+  }
   return (
     <main className="main-container">
       <div className="left-cont">
         <h1 className="covid-title">Covid Stuff</h1>
-        <form className="covid-stuff">
+        <form className="covid-stuff" onSubmit={handleSubmit}>
           <div className="work-preference">
             <h4 className="pref-title">how would you prefer to work?</h4>
             <label htmlFor="sairme">
               <input
                 type="radio"
-                name="preference"
-                value="sairme"
+                name="work_preference"
+                value="from_office"
                 required
                 id="sairme"
                 onChange={handleChange}
@@ -50,8 +45,8 @@ export default function Covid({ linkStyle }) {
             <label htmlFor="home">
               <input
                 type="radio"
-                name="preference"
-                value="home"
+                name="work_preference"
+                value="from_home"
                 required
                 id="home"
                 onChange={handleChange}
@@ -61,7 +56,7 @@ export default function Covid({ linkStyle }) {
             <label htmlFor="hybrid">
               <input
                 type="radio"
-                name="preference"
+                name="work_preference"
                 value="hybrid"
                 required
                 onChange={handleChange}
@@ -75,37 +70,52 @@ export default function Covid({ linkStyle }) {
             <label>
               <input
                 type="radio"
-                name="covidContact"
+                name="had_covid"
                 value={true}
                 required
-                onChange={handleChange}
+                onClick={() => {
+                  setUserInfo((prevInfo) => {
+                    return {
+                      ...prevInfo,
+                      had_covid: true,
+                    };
+                  });
+                }}
               />
               Yes
             </label>
             <label>
               <input
                 type="radio"
-                name="covidContact"
+                name="had_covid"
                 value={false}
                 required
-                onChange={handleChange}
+                onClick={() => {
+                  setUserInfo((prevInfo) => {
+                    return {
+                      ...prevInfo,
+                      had_covid: false,
+                      had_covid_at: "",
+                    };
+                  });
+                }}
               />
               No
             </label>
           </div>
 
-          {formData.covidContact == "true" && (
+          {userInfo.had_covid && (
             <div className="covid-date">
               <h4>When?</h4>
-              <ReactDatePicker
-                className="datepicker"
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                placeholderText="Date"
+              <input
+                type="date"
+                name="had_covid_at"
+                className="datePicker"
+                value={userInfo.had_covid_at}
                 required
-                maxDate={new Date()}
+                placeholder="Date"
+                onChange={handleChange}
               />
-              <img src={calendar} className="date-btn"></img>
             </div>
           )}
           <div className="covid-contact">
@@ -116,7 +126,14 @@ export default function Covid({ linkStyle }) {
                 name="vaccinated"
                 value={true}
                 required
-                onChange={handleChange}
+                onClick={() => {
+                  setUserInfo((prevInfo) => {
+                    return {
+                      ...prevInfo,
+                      vaccinated: true,
+                    };
+                  });
+                }}
               />
               Yes
             </label>
@@ -126,23 +143,31 @@ export default function Covid({ linkStyle }) {
                 name="vaccinated"
                 value={false}
                 required
-                onChange={handleChange}
+                onClick={() => {
+                  setUserInfo((prevInfo) => {
+                    return {
+                      ...prevInfo,
+                      vaccinated: false,
+                      vaccinated_at: "",
+                    };
+                  });
+                }}
               />
               No
             </label>
           </div>
-          {formData.vaccinated == "true" && (
+          {userInfo.vaccinated && (
             <div className="covid-date">
               <h4>When did you get your last covid vaccine?</h4>
-              <ReactDatePicker
-                className="datepicker"
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                placeholderText="Date"
+              <input
+                type="date"
+                name="vaccinated_at"
+                className="datePicker"
                 required
-                maxDate={new Date()}
+                value={userInfo.vaccinated_at}
+                placeholder="Date"
+                onChange={handleChange}
               />
-              <img src={calendar} className="date-btn2"></img>
             </div>
           )}
           <div className="pagination">
@@ -158,15 +183,15 @@ export default function Covid({ linkStyle }) {
             <Link to="/covid" style={linkStyle}>
               <i className="fas fa-circle "></i>
             </Link>
-            <Link to="/insights" style={linkStyle}>
+            <button className="button-dark">
               <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/submit" style={linkStyle}>
-              <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/insights" style={linkStyle}>
+            </button>
+
+            <i className="fas fa-circle dark"></i>
+
+            <button className="arrow-right">
               <img src={next} className="next"></img>
-            </Link>
+            </button>
           </div>
         </form>
         <div className="selected-skills"></div>

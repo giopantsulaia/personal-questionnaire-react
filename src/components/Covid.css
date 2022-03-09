@@ -53,31 +53,25 @@
   font-size: 14px;
   margin-left: 100px;
 }
-.datepicker {
-  height: 54px;
-  background: #ffffff;
-  border: 1px solid #525557;
-  margin: 20px;
-  box-sizing: border-box;
-  padding-left: 40px;
-  align-items: center;
-  font-family: Montserrat;
-  font-size: 14px;
-  font-style: italic;
-  width: 455px;
-  margin: -10px auto 0px -190px;
-  color: #454545;
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url(../images/calendar.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
   cursor: pointer;
 }
-.date-btn {
-  position: absolute;
-  left: 540px;
-  pointer-events: none;
-  top: 543px;
+.datePicker {
+  width: 455px;
+  height: 54px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
 }
-.date-btn2 {
-  position: relative;
-  left: 400px;
-  pointer-events: none;
-  bottom: 37px;
-}
+/* input[type="date"]:not(.has-value):before {
+  color: lightgray;
+  content: attr(placeholder);
+} */

@@ -64,3 +64,17 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+.arrow-right {
+  background-color: #fff;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+.button-dark {
+  width: 30px;
+  background-color: #fff;
+  font-size: large;
+  padding: 0;
+  margin-bottom: 1px;
+  border: none;
+}

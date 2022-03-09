@@ -115,6 +115,7 @@
   width: 19px;
   height: 19px;
   padding: 0px;
+  cursor: pointer;
 }
 .pagination {
   display: flex;
@@ -128,6 +129,10 @@
   width: 18px;
   height: 18px;
   margin-right: 7px;
+}
+.next {
+  width: 18px;
+  height: 18px;
 }
 .dark {
   opacity: 0.1;

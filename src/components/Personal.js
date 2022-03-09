@@ -1,29 +1,11 @@
 import React from "react";
 import "./Personal.css";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import previous from "../images/Previous.png";
 import next from "../images/Next.png";
-
-export default function Personal({ linkStyle }) {
-  // MAKING IT SO THAT DATA DOES NOT GET LOST AFTER REFRESHING/LEAVING THE PAGE
-  function getFormInfo() {
-    const storedInfo = localStorage.getItem("form");
-    if (!storedInfo)
-      return {
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNum: "",
-      };
-    return JSON.parse(storedInfo);
-  }
+import { useNavigate } from "react-router";
+export default function Personal({ linkStyle, setUserInfo, userInfo }) {
   //------------------------------------------------------------------
-
-  const [userInfo, setUserInfo] = useState(getFormInfo);
-  useEffect(() => {
-    localStorage.setItem("form", JSON.stringify(userInfo));
-  }, [userInfo]);
   function handleChange(event) {
     const { name, value } = event.target;
     setUserInfo((prevUserInfo) => {
@@ -33,19 +15,23 @@ export default function Personal({ linkStyle }) {
       };
     });
   }
-
+  let navigate = useNavigate();
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/technical-skillset");
+  }
   return (
     <main className="main-container">
       <div className="left-cont">
         <h1 className="personal-title">
           Hey, Rocketeer, what are your coordinates?
         </h1>
-        <form className="personal-inputs">
+        <form className="personal-inputs" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="First Name"
-            name="firstName"
-            value={userInfo.firstName}
+            name="first_name"
+            value={userInfo.first_name}
             onChange={handleChange}
             required
             minLength="2"
@@ -53,8 +39,8 @@ export default function Personal({ linkStyle }) {
           <input
             type="text"
             placeholder="Last Name"
-            name="lastName"
-            value={userInfo.lastName}
+            name="last_name"
+            value={userInfo.last_name}
             onChange={handleChange}
             required
             minLength="2"
@@ -67,46 +53,39 @@ export default function Personal({ linkStyle }) {
             onChange={handleChange}
             required
           />
-          {/* <input
-            type="number"
-            placeholder="+995 5_ _ _ _"
-            name="phoneNum"
-            value={userInfo.phoneNum}
-            onChange={handleChange}
-          /> */}
           <input
             type="tel"
             id="phone"
-            name="phoneNum"
+            name="phone"
             placeholder="+995 5_ _ _ _"
-            pattern="(\+|995)\d{9,9}"
-            value={userInfo.phoneNum}
+            pattern="\+[0-9]{12}"
+            value={userInfo.phone}
+            onInvalid={() => {
+              alert("phone number must be georgian: (+995)-123-456-789 ");
+            }}
             onChange={handleChange}
-          ></input>
+          />
           <div className="pagination">
             <Link to="/" style={linkStyle}>
-              <img src={previous} className="previous"></img>
+              <img src={previous} className="previous" />
             </Link>
             <Link to="/personal-info" style={linkStyle}>
               <i className="fas fa-circle"></i>
             </Link>
-            <Link to="/technical-skillset" style={linkStyle}>
+            <button className="button-dark">
               <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/covid" style={linkStyle}>
-              <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/insights" style={linkStyle}>
-              <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/submit" style={linkStyle}>
-              <i className="fas fa-circle dark"></i>
-            </Link>
-            <Link to="/technical-skillset" style={linkStyle}>
+            </button>
+
+            <i className="fas fa-circle dark"></i>
+
+            <i className="fas fa-circle dark"></i>
+
+            <i className="fas fa-circle dark"></i>
+
+            <button className="arrow-right">
               <img src={next} className="next"></img>
-            </Link>
+            </button>
           </div>
-          <button>ok</button>
         </form>
       </div>
 

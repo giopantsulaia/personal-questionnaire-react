@@ -5,7 +5,14 @@ import { Link } from "react-router-dom";
 import previous from "../images/Previous.png";
 import next from "../images/Next.png";
 import removeIcon from "../images/Remove.svg";
-export default function Skillset({ input, setInput, chosen, setChosen }) {
+export default function Skillset({
+  input,
+  setInput,
+  chosen,
+  setChosen,
+  userInfo,
+  setUserInfo,
+}) {
   //SKILLS FETCHED FROM API
   const [skills, setSkills] = useState([]);
   useEffect(() => {
@@ -25,22 +32,39 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
         return () => (isSubscribed = false);
       });
   }, []);
-
   function handleChange(e) {
     setInput(e.target.value);
   }
+  const [skillCount, setSkillCount] = useState(0);
   let randomNum;
-  function onSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if (chosen.find((e) => e.skili === input) == null) {
       setChosen([
         ...chosen,
-        { id: uuidv4(), skili: input, years: skillExp.value },
+        {
+          id: skills.find((o) => o.title === input).id,
+          skili: input,
+          years: skillExp.value,
+        },
       ]);
     }
     randomNum = Math.floor(Math.random() * 10000);
+    setSkillCount((prevSkillCount) => prevSkillCount + 1);
   }
-
+  function updateState() {
+    setUserInfo((prevUserInfo) => {
+      return {
+        ...prevUserInfo,
+        skills: chosen.map((item) => {
+          return {
+            id: item.id,
+            experience: item.years,
+          };
+        }),
+      };
+    });
+  }
   function handleExpValueChange(event) {
     const { name, value } = event.target;
     setSkillexp((prevSkillexp) => {
@@ -50,27 +74,41 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
       };
     });
   }
+
   const [skillExp, setSkillexp] = useState("");
   const handleRemove = (id) => {
     const newSkills = chosen.filter((item) => item.id !== id);
     setChosen(newSkills);
+    setSkillCount((prevSkillCount) => prevSkillCount - 1);
   };
   const linkStyle = {
     margin: "0px",
     padding: "0px",
     textDecoration: "none",
   };
+  useEffect(() => {
+    localStorage.setItem("form", JSON.stringify(userInfo));
+  }, [userInfo]);
+  function handleClick() {
+    if (skillCount != 0) {
+      updateState();
+    } else {
+      window.location.reload(false);
+      alert("YOU HAVE TO CHOOSE AT LEAST 1 SKILL IN ORDER TO CONTINUE");
+    }
+  }
   return (
     <main className="main-container">
       <div className="left-cont">
         <h1 className="technical-title">Tell us about your skills</h1>
-        <form className="skill-inputs" onSubmit={onSubmit}>
+        <form className="skill-inputs" onSubmit={handleSubmit}>
           <select
             className="skill-select"
             name="chosen"
             onChange={handleChange}
+            defaultValue={"Skills"}
           >
-            <option disabled hidden key={Math.floor(Math.random() * 10000)}>
+            <option disabled hidden value={"Skills"}>
               Skills
             </option>
             {skills.map((skill) => {
@@ -87,7 +125,13 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
             name="value"
             value={skillExp.value || ""}
             className="years-exp"
+            onInvalid={() => {
+              alert("YOU CAN ONLY CHOOSE NUMBERS BETWEEN 0 AND 20");
+            }}
+            min={1}
+            required
             onChange={handleExpValueChange}
+            max={20}
           />
           <button className="add-skill">Add Programming Language</button>
         </form>
@@ -125,16 +169,15 @@ export default function Skillset({ input, setInput, chosen, setChosen }) {
           <Link to="/technical-skillset" style={linkStyle}>
             <i className="fas fa-circle"></i>
           </Link>
-          <Link to="/covid" style={linkStyle}>
+          <Link to="/covid" style={linkStyle} onClick={handleClick}>
             <i className="fas fa-circle dark"></i>
           </Link>
-          <Link to="/insights" style={linkStyle}>
-            <i className="fas fa-circle dark"></i>
-          </Link>
-          <Link to="/submit" style={linkStyle}>
-            <i className="fas fa-circle dark"></i>
-          </Link>
-          <Link to="/covid" style={linkStyle}>
+
+          <i className="fas fa-circle dark"></i>
+
+          <i className="fas fa-circle dark"></i>
+
+          <Link to="/covid" style={linkStyle} onClick={handleClick}>
             <img src={next} className="next"></img>
           </Link>
         </div>

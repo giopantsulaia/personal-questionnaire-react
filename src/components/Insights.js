@@ -2,19 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import previous from "../images/Previous.png";
 import next from "../images/Next.png";
-import { useState } from "react";
 import "./Insights.css";
-export default function Insights({ linkStyle }) {
-  const [formData, setFormData] = useState({
-    attendence: "",
-    speakAbout: "",
-    somethingSpecial: "",
-  });
+import { useNavigate } from "react-router-dom";
+export default function Insights({ linkStyle, userInfo, setUserInfo }) {
   function handleChange(event) {
     const { name, value } = event.target;
-    setFormData((prevFormData) => {
+    setUserInfo((prevUserInfo) => {
       return {
-        ...prevFormData,
+        ...prevUserInfo,
         [name]: value,
       };
     });
@@ -23,13 +18,17 @@ export default function Insights({ linkStyle }) {
     width: "705px",
     height: "606px",
   };
-
+  let navigate = useNavigate();
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("/submit");
+  }
   return (
     <div>
       <main className="main-container">
         <div className="left-cont">
           <h1 className="covid-title">What about you?</h1>
-          <form className="devtalk">
+          <form className="devtalk" onSubmit={handleSubmit}>
             <div className="work-preference">
               <h4 className="pref-title">
                 Would you attend Devtalks and maybe also organize your own?
@@ -37,46 +36,63 @@ export default function Insights({ linkStyle }) {
               <label htmlFor="yes">
                 <input
                   type="radio"
-                  name="attendence"
+                  name="will_organize_devtalk"
                   value={true}
                   required
                   id="yes"
-                  onChange={handleChange}
+                  onClick={() => {
+                    setUserInfo((prevInfo) => {
+                      return {
+                        ...prevInfo,
+                        will_organize_devtalk: true,
+                      };
+                    });
+                  }}
                 />
                 Yes
               </label>
               <label htmlFor="no">
                 <input
                   type="radio"
-                  name="attendence"
+                  name="will_organize_devtalk"
                   value={false}
                   required
                   id="no"
-                  onChange={handleChange}
+                  onClick={() => {
+                    setUserInfo((prevInfo) => {
+                      return {
+                        ...prevInfo,
+                        will_organize_devtalk: false,
+                        devtalk_topic: "",
+                      };
+                    });
+                  }}
                 />
                 No
               </label>
             </div>
+            {userInfo.will_organize_devtalk && (
+              <div className="devtalk-cont">
+                <h4 className="pref-title">
+                  What would you speak about at Devtalk?
+                </h4>
+                <textarea
+                  placeholder="I would..."
+                  name="devtalk_topic"
+                  required
+                  value={userInfo.devtalk_topic}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+            )}
             <div className="devtalk-cont">
-              <h4 className="pref-title">
-                Would you attend Devtalks and maybe also organize your own?
-              </h4>
-              <textarea
-                placeholder="I would..."
-                name="speakAbout"
-                value={formData.speakAbout}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div className="devtalk-cont">
-              <h4 className="pref-title">
-                Would you attend Devtalks and maybe also organize your own?
-              </h4>
+              <h4 className="pref-title">Tell us something special</h4>
               <textarea
                 placeholder="I..."
-                name="somethingSpecial"
-                value={formData.somethingSpecial}
+                name="something_special"
+                value={userInfo.something_special}
                 onChange={handleChange}
+                required
               ></textarea>
             </div>
             <div className="pagination">
@@ -95,12 +111,12 @@ export default function Insights({ linkStyle }) {
               <Link to="/insights" style={linkStyle}>
                 <i className="fas fa-circle"></i>
               </Link>
-              <Link to="/covid" style={linkStyle}>
+              <button className="button-dark">
                 <i className="fas fa-circle dark"></i>
-              </Link>
-              <Link to="/submit" style={linkStyle}>
+              </button>
+              <button className="arrow-right">
                 <img src={next} className="next"></img>
-              </Link>
+              </button>
             </div>
           </form>
           <div className="selected-skills"></div>
