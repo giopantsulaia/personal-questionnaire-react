@@ -1,10 +1,12 @@
-# Getting Started with Create React App
+A simple survey application for developers who want to apply for the job created using react
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
 
-## Available Scripts
+Simply clone the project and run:
 
-In the project directory, you can run:
+### `npm install`
+
+Now you can run the app:
 
 ### `npm start`
 
